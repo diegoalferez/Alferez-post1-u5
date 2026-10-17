@@ -10,9 +10,9 @@ Este repositorio único documenta el laboratorio guiado de la Unidad 5, dividido
 
 | Componente | Detalle |
 |---|---|
-| Sistema anfitrión | Windows [AJUSTAR: versión] |
-| DOSBox | [AJUSTAR: versión, por ejemplo 0.74-3] |
-| NASM para DOS | [AJUSTAR: resultado de `nasm -v`, por ejemplo 2.15.05] |
+| Sistema anfitrión | Windows 11 |
+| DOSBox | 0.74-3 |
+| NASM para DOS | 2.15.05 (compilado el 28 de agosto de 2020) |
 | VirtualBox | [AJUSTAR: versión 7.x] |
 | SO huésped | Alpine Linux 3.19.x (Standard, x86_64) |
 | VM `Lab5-Alpine` | 1 GB de RAM y 1 CPU al crearse; 2 GB y 2 CPUs tras el Paso 5; disco VDI dinámico de 10 GB; segundo disco VDI fijo de 4 GB |
@@ -45,7 +45,8 @@ El estudiante creó el directorio de trabajo, inicializó Git en la rama `main` 
 
 **Checkpoint 4 — `entrada.com` (INT 21h funciones 07h, 02h y 09h):** ![cp4](capturas/p1_cp4_entrada.png)
 
-**Checkpoint 5 — sesión con DEBUG sobre `saludo.com`** (`-r`, `-u`, `-t` y `-g`): ![cp5](capturas/p1_cp5_debug.png)
+**Checkpoint 5 — sesión con DEBUG sobre `saludo.com`** (`-r`, `-u`, `-t`, `-p` y `-g`): ![cp5](capturas/p1_cp5_debug.png)
+![cp5 pasos](capturas/p1_cp5_debug_pasos.png)
 
 **Checkpoint 6 — `ciclos.com` con `cycles=8000`** (INT 21h función 2Ch): ![cp6](capturas/p1_cp6_ciclos_8000.png)
 
@@ -55,9 +56,11 @@ El número de iteraciones es idéntico en las tres corridas (300 × 65535); solo
 
 | Corrida | cycles | Hora inicial (hh:mm:ss:cc) | Hora final (hh:mm:ss:cc) | Duración observada (centésimas) |
 |---|---|---|---|---|
-| 1 | 8000 | [REGISTRAR] | [REGISTRAR] | [CALCULAR] |
-| 2 | 1000 | [REGISTRAR] | [REGISTRAR] | [CALCULAR] |
-| 3 | 20000 | [REGISTRAR] | [REGISTRAR] | [CALCULAR] |
+| 1 | 8000 | 20:49:01:27 | 20:49:06:21 | 494 |
+| 2 | 1000 | 20:53:56:61 | 20:54:35:99 | 3938 |
+| 3 | 20000 | 20:59:10:67 | 20:59:12:65 | 198 |
+
+En la corrida 2 el minuto cambió de 53 a 54 durante la medición, por lo que se sumaron 6000 centésimas a la hora final para calcular la duración. Las duraciones son inversamente proporcionales a cycles: con cycles=1000 (3938 centésimas) el bucle tarda unas 8 veces lo que tarda con cycles=8000 (494), y con cycles=20000 (198) tarda unas 2,5 veces menos, la misma relación que hay entre los valores de cycles. Esto confirma que cycles controla la velocidad de emulación y no la corrección del programa, que ejecuta exactamente las mismas iteraciones en las tres corridas.
 
 ![cycles 1000](capturas/p1_cp7_cycles_1000.png)
 ![cycles 20000](capturas/p1_cp7_cycles_20000.png)
