@@ -1,0 +1,9 @@
+# Binarios de herramientas (se copian a la raiz solo para trabajar en DOSBox)
+*.exe
+*.EXE
+# Archivos grandes de la Parte 2: no se suben al repositorio
+*.ova
+*.vdi
+*.vmdk
+# Depurador de DOS (herramienta de trabajo, no es parte de la entrega)
+/DEBUG.COM
