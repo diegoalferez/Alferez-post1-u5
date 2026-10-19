@@ -7,3 +7,7 @@
 *.vmdk
 # Depurador de DOS (herramienta de trabajo, no es parte de la entrega)
 /DEBUG.COM
+
+*.ova
+*.vdi
+*.vmdk
